@@ -60,50 +60,21 @@
                     <input type="datetime-local" id="fecha_hora_inicio" name="fecha_hora_inicio" class="form-control"
                         required>
                 </div>
-
-                <div class="form-group">
-                    <label for="afectacion_servicio">Afectación del Servicio:</label>
-                    <input type="text" id="afectacion_servicio" name="afectacion_servicio" class="form-control"
-                        required>
-                </div>
             </fieldset>
 
             <fieldset class="border p-4 mb-4">
-                <legend class="w-auto">Confirmación Visual y Geolocalización</legend>
+                <legend class="w-auto">Adjunta evidencia</legend>
                 <div class="form-group">
                     <label for="imagenes_videos">Subida de Imágenes o Videos:</label>
                     <input type="file" id="imagenes_videos" name="imagenes_videos[]" multiple class="form-control-file">
-                </div>
-
-                <div class="form-group form-check">
-                    <input type="checkbox" id="geolocalizacion" name="geolocalizacion" class="form-check-input">
-                    <label class="form-check-label" for="geolocalizacion">Activar Geolocalización</label>
                 </div>
             </fieldset>
 
             <fieldset class="border p-4 mb-4">
                 <legend class="w-auto">Información Adicional y Comentarios</legend>
                 <div class="form-group">
-                    <label for="comentarios_adicionales">Comentarios Adicionales:</label>
-                    <textarea id="comentarios_adicionales" name="comentarios_adicionales" rows="4" cols="50"
-                        class="form-control"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="disponibilidad_contacto">Disponibilidad para Contacto:</label>
+                    <label for="disponibilidad_contacto">Numero de contacto adicional:</label>
                     <input type="text" id="disponibilidad_contacto" name="disponibilidad_contacto" class="form-control">
-                </div>
-            </fieldset>
-
-            <fieldset class="border p-4 mb-4">
-                <legend class="w-auto">Prioridad</legend>
-                <div class="form-group">
-                    <label for="nivel_urgencia">Nivel de Urgencia:</label>
-                    <select id="nivel_urgencia" name="nivel_urgencia" class="form-control">
-                        <option value="bajo">Bajo</option>
-                        <option value="medio">Medio</option>
-                        <option value="alto">Alto</option>
-                    </select>
                 </div>
             </fieldset>
 
