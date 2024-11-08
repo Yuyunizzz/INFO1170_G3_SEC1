@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#inicio">Inicio</a>
+                            <a class="nav-link" href="../2. Inicios/iniciocliente.html">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/1. PRINCIPAL/6. Informaciones/QuieneSomos.html">¿Quiénes somos?</a>
@@ -38,7 +38,7 @@
         <h1 class="text-center">Formulario de Reporte de Incidencias</h1>
         <form id="form-reporte" enctype="multipart/form-data">
             <fieldset class="border p-4 mb-4">
-                <legend class="w-auto">Descripción de la Incidencia</legend>
+                <legend class="w-auto">Descripción</legend>
                 <div class="form-group">
                     <label for="tipo_problema">Tipo de Problema:</label>
                     <select id="tipo_problema" name="tipo_problema" class="form-control">
@@ -46,6 +46,7 @@
                         <option value="baja_tension">Baja tensión</option>
                         <option value="oscilaciones_voltaje">Oscilaciones de voltaje</option>
                         <option value="ruido_chispas">Ruido o chispas en la red eléctrica</option>
+                        <option value="otro">Otro</option>
                     </select>
                 </div>
 
@@ -60,6 +61,11 @@
                     <input type="datetime-local" id="fecha_hora_inicio" name="fecha_hora_inicio" class="form-control"
                         required>
                 </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección Exacta:</label>
+                    <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Ingrese la dirección" required>
+                </div>
             </fieldset>
 
             <fieldset class="border p-4 mb-4">
@@ -70,16 +76,8 @@
                 </div>
             </fieldset>
 
-            <fieldset class="border p-4 mb-4">
-                <legend class="w-auto">Información Adicional y Comentarios</legend>
-                <div class="form-group">
-                    <label for="disponibilidad_contacto">Numero de contacto adicional:</label>
-                    <input type="text" id="disponibilidad_contacto" name="disponibilidad_contacto" class="form-control">
-                </div>
-            </fieldset>
-
             <!-- Botón con enlace que redirige directamente usando ruta relativa -->
-            <a href="../5.%20Updates/update_usuario.html" class="btn btn-primary">
+            <a href="../5. Updates/update_cliente.html" class="btn btn-primary">
                 Enviar Reporte
             </a>
         </form>
