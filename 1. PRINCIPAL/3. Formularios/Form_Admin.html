@@ -12,27 +12,7 @@
     <title>Informe de Situación Actual de Emergencia</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script>
-        function enviarFormulario(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-
-            fetch('/informar-situacion', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Formulario enviado', data);
-                    alert('Formulario enviado correctamente');
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Hubo un problema al enviar el formulario');
-                });
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
@@ -64,7 +44,7 @@
 
     <main class="container mt-5">
         <h1>Informe de Situación Actual de Emergencia</h1>
-        <form id="form-emergencia" onsubmit="enviarFormulario(event)" enctype="multipart/form-data">
+        <form id="form-emergencia" enctype="multipart/form-data">
             <!-- Sección 1: Información del Reporte -->
             <fieldset class="border p-4 mb-4">
                 <legend class="w-auto">Información del Reporte</legend>
@@ -75,7 +55,7 @@
                         value="123456">
                 </div>
 
-                <!-- AQUI VAN LOS DATOS DEL CLIENTE QUE SE TRASPASARAN AUTOMATICAMNETE-->
+                <!-- AQUI VAN LOS DATOS DEL CLIENTE QUE SE TRASPASARAN AUTOMÁTICAMENTE -->
 
             </fieldset>
 
@@ -95,11 +75,13 @@
                     <input type="text" class="form-control" id="tiempo_estimado_solucion"
                         name="tiempo_estimado_solucion" placeholder="Ej. 2 horas, 1 día" required>
                 </div>
-    
+
             </fieldset>
 
             <!-- Botón de envío -->
-            <button type="submit" class="btn btn-primary">Enviar Informe</button>
+            <button type="button" class="btn btn-primary" onclick="generarPDF()">
+                Enviar Informe
+            </button>
         </form>
     </main>
 
@@ -110,6 +92,24 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function generarPDF() {
+            // Selecciona el elemento que quieres convertir a PDF
+            const formEmergencia = document.getElementById('form-emergencia');
+
+            // Configuración de opciones para html2pdf
+            const opciones = {
+                margin: 1,
+                filename: 'informe_emergencia.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Generar el PDF
+            html2pdf().from(formEmergencia).set(opciones).save();
+        }
+    </script>
 </body>
 
 </html>

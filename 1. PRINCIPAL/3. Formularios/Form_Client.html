@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Reporte de Incidencias</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +30,8 @@
                             <a class="nav-link" href="../2. Inicios/iniciocliente.html">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/1. PRINCIPAL/6. Informaciones/QuieneSomos.html">¿Quiénes somos?</a>
+                            <a class="nav-link" href="/1. PRINCIPAL/6. Informaciones/QuieneSomos.html">¿Quiénes
+                                somos?</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/1. PRINCIPAL/6. Informaciones/Contactanos.html">Contacto</a>
@@ -70,7 +72,8 @@
 
                 <div class="form-group">
                     <label for="direccion">Dirección Exacta:</label>
-                    <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Ingrese la dirección" required>
+                    <input type="text" id="direccion" name="direccion" class="form-control"
+                        placeholder="Ingrese la dirección" required>
                 </div>
             </fieldset>
 
@@ -82,10 +85,10 @@
                 </div>
             </fieldset>
 
-            <!-- Botón con enlace que redirige directamente usando ruta relativa -->
-            <a href="../5. Updates/update_cliente.html" class="btn btn-primary">
+            <!-- Botón de generación de PDF -->
+            <button type="button" class="btn btn-primary" onclick="generarPDF()">
                 Enviar Reporte
-            </a>
+            </button>
         </form>
     </main>
 
@@ -96,6 +99,24 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function generarPDF() {
+            // Selecciona el elemento del formulario para convertirlo en PDF
+            const formReporte = document.getElementById('form-reporte');
+
+            // Configuración de opciones para html2pdf
+            const opciones = {
+                margin: 1,
+                filename: 'reporte_incidencia.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Generar y descargar el PDF
+            html2pdf().from(formReporte).set(opciones).save();
+        }
+    </script>
 </body>
 
 </html>
